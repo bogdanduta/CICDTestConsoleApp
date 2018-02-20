@@ -12,7 +12,7 @@ namespace CICDTestConsoleApp
         {
             Console.WriteLine("v1");
             Console.WriteLine("Press any key to close..");
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
