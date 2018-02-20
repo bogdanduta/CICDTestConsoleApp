@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CICDTestConsoleApp
@@ -9,10 +11,15 @@ namespace CICDTestConsoleApp
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine("v1");
-            Console.WriteLine("Press any key to close..");
-            Console.ReadLine();
+        {            
+            var t = new Timer(state =>
+                {
+                    File.AppendAllText("log.txt", DateTime.Now.ToString());
+                }, null,
+                TimeSpan.FromSeconds(0),
+                TimeSpan.FromSeconds(5));
+
+            Thread.Sleep(60 * 60 * 1000);
         }
     }
 }
